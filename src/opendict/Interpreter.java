@@ -1,9 +1,14 @@
 package opendict;
 
+import com.google.gson.JsonParseException;
 import opendict.common.Dictionary;
 import opendict.exception.DictionaryNotAvailableException;
 import opendict.exception.DictionaryNotFoundException;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -40,7 +45,9 @@ class Interpreter {
         try {
             System.out.println(dictionary.lookup(word).toString());
         } catch (DictionaryNotAvailableException e) {
-            System.out.println(e.getMessage());
+            System.out.println("*" + e.getMessage() + "*");
+        } catch (NullPointerException e) {
+            System.out.println("*failed to parse json string*");
         }
     }
 
@@ -59,14 +66,26 @@ class Interpreter {
     }
 
     private void usage() {
-        String usage = "available command :\n" +
-                "\tlist dictionaries\n" +
-                "\tlookup <word> in <dictionary>\n" +
-                "\t\thint : replace \" \" in word with \"-\"\n" +
-                "\thelp\n" +
-                "\texit\n";
+        FileReader reader;
+        String filename = "usage.txt";
+        char[] buffer = new char[1024*1024];
+        int length;
 
-        System.out.print(usage);
+        try {
+            reader = new FileReader(new File(filename));
+        } catch (FileNotFoundException e) {
+            System.out.println("*" + e.getMessage() + "*");
+            return;
+        }
+
+        try {
+            length = reader.read(buffer);
+        } catch (IOException e) {
+            System.out.println("*" + e.getMessage() + "*");
+            return;
+        }
+
+        System.out.print(new String(buffer, 0, length));
     }
 
     private void parse(String command) {
