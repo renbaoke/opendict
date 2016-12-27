@@ -1,6 +1,6 @@
-package opendict.longman;
+package opendict.dictionary.longman;
 
-import opendict.longman.response.Response;
+import opendict.dictionary.longman.response.Response;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

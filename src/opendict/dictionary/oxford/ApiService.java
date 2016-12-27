@@ -1,6 +1,6 @@
-package opendict.oxford;
+package opendict.dictionary.oxford;
 
-import opendict.oxford.response.Response;
+import opendict.dictionary.oxford.response.Response;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

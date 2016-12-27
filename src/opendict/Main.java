@@ -1,7 +1,7 @@
 package opendict;
 
-import opendict.longman.LongmanDictionary;
-import opendict.oxford.OxfordDictionary;
+import opendict.dictionary.longman.LongmanDictionary;
+import opendict.dictionary.oxford.OxfordDictionary;
 
 public class Main {
 

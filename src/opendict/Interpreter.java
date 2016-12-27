@@ -26,20 +26,16 @@ class Interpreter {
         String word = tokenizer.nextToken().replace("-", " ");
 
         Dictionary dictionary;
-        if (tokenizer.hasMoreTokens() && "in".equals(tokenizer.nextToken()) && tokenizer.hasMoreTokens())
-            try {
+        try {
+            if (tokenizer.hasMoreTokens() && "in".equals(tokenizer.nextToken()) && tokenizer.hasMoreTokens())
                 dictionary = shelf.getDictionary(tokenizer.nextToken());
-            } catch (DictionaryNotFoundException e) {
-                System.out.println(e.getMessage());
-                return;
-            }
-        else
-            try {
+            else
                 dictionary = shelf.getDefaultDictionary();
-            } catch (DictionaryNotFoundException e) {
-                System.out.println(e.getMessage());
-                return;
-            }
+
+        } catch (DictionaryNotFoundException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
         try {
             System.out.println(dictionary.lookup(word).toString());
