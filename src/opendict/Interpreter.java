@@ -1,6 +1,5 @@
 package opendict;
 
-import com.google.gson.JsonParseException;
 import opendict.common.Dictionary;
 import opendict.exception.DictionaryNotAvailableException;
 import opendict.exception.DictionaryNotFoundException;
@@ -102,9 +101,11 @@ class Interpreter {
                 list(tokenizer);
                 break;
             case "help":
+            case "usage":
                 usage();
                 break;
             case "exit":
+            case "quit":
                 System.exit(0);
             default:
 

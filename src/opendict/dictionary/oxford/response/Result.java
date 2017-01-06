@@ -15,7 +15,8 @@ public class Result implements opendict.common.Result {
     public String id;
     public String language;
     public LexicalEntry[] lexicalEntries;
-    public String type;
+    public Pronunciation[] pronunciations;
+    //public String type;
     public String word;
 
     @Override

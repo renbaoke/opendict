@@ -7,8 +7,11 @@ import opendict.common.Audio;
  */
 public class Pronunciation implements opendict.common.Pronunciation {
     public String audioFile;
+    //public String[] regions;
     public String[] dialects;
+    //public String phoneticsNotation;
     public String phoneticNotation;
+    //public String phoneticsSpelling;
     public String phoneticSpelling;
 
     @Override
